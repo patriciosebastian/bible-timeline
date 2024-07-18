@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* navbar -> min-height: 4rem || 64px */
+        --mobile-minus-navbar: calc(100svh - 4rem);
+        --desktop-minus-navbar: calc(100vh - 4rem);
+    }
+}
+
+
+/**
+* Overrides ------------------------
+**/
+
+.timeline-box .shadow {
+    left: -112px !important;
+    top: -28px !important;
+    border-color: black;
+}
+
+/* extend length of hr on mobile */
+.timeline-vertical > li > hr {
+    padding-top: 3rem;
+}
+
+/* extend length of hr on desktop */
+.timeline-horizontal > li > hr {
+    padding-inline: 3rem;
+}
