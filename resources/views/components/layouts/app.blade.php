@@ -55,5 +55,8 @@
             });
         });
     </script>
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "87374d00fca64af5ad4a104a6f4032cb"}'></script>
+    <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
