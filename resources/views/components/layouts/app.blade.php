@@ -21,7 +21,30 @@
 
     {{-- enable .timeline-horizontal side scrolling on desktop --}}
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        function detectOS() {
+            const userAgent = window.navigator.userAgent;
+            const platform = window.navigator?.userAgentData?.platform || window.navigator.platform;
+            const macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
+            const iosPlatforms = ['iPhone', 'iPad', 'iPod'];
+            const windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
+            const androidPlatform = /Android/;
+
+            if (macosPlatforms.includes(platform)) {
+                return 'Mac OS';
+            } else if (iosPlatforms.includes(platform)) {
+                return 'iOS';
+            } else if (windowsPlatforms.includes(platform)) {
+                return 'Windows';
+            } else if (androidPlatform.test(userAgent)) {
+                return 'Android';
+            } else if (!platform && /Linux/.test(userAgent)) {
+                return 'Linux';
+            }
+
+            return 'Unknown';
+        }
+
+        function enableSideScrolling() {
             const scrollContainer = document.querySelector('.timeline-horizontal');
             const scrollMultiplier = 7;
             let isScrolling;
@@ -32,11 +55,9 @@
                 if (event.deltaY !== 0) {
                     event.preventDefault();
                     clearTimeout(isScrolling);
-
                     const now = Date.now();
                     const timeDiff = now - lastScrollTime;
                     lastScrollTime = now;
-
                     if (timeDiff < smoothScrollThreshold) {
                         scrollContainer.scrollBy({
                             left: event.deltaY * scrollMultiplier,
@@ -53,6 +74,13 @@
                     }
                 }
             });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const os = detectOS();
+            if (os !== 'Mac OS' && os !== 'iOS') {
+                enableSideScrolling();
+            }
         });
     </script>
     <!-- Cloudflare Web Analytics -->
