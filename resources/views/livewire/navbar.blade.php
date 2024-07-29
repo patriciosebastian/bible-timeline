@@ -27,12 +27,12 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow !right-0" x-show="open" @click="open = false">
-          <li><a href="{{ route('main-page-timeline') }}">Home</a></li>
-          <li><a href="{{ route('old-testament-timeline') }}">OT Timeline</a></li>
-          <li><a href="{{ route('apocrypha-timeline') }}">Apocrypha</a></li>
-          <li><a href="{{ route('new-testament-timeline') }}">NT Timeline</a></li>
-          {{-- <li><a href="{{ route('dead-sea-scrolls-timeline') }}">Dead Sea Scrolls</a></li> --}}
-          <li><a href="{{ route('sources') }}">Sources</a></li>
+          <li><a href="{{ route('main-page-timeline') }}" wire:navigate>Home</a></li>
+          <li><a href="{{ route('old-testament-timeline') }}" wire:navigate>OT Timeline</a></li>
+          <li><a href="{{ route('apocrypha-timeline') }}" wire:navigate>Apocrypha</a></li>
+          <li><a href="{{ route('new-testament-timeline') }}" wire:navigate>NT Timeline</a></li>
+          {{-- <li><a href="{{ route('dead-sea-scrolls-timeline') }}" wire:navigate>Dead Sea Scrolls</a></li> --}}
+          <li><a href="{{ route('sources') }}" wire:navigate>Sources</a></li>
         </ul>
       </div>
     </div>
